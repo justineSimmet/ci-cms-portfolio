@@ -1,0 +1,160 @@
+/*------------------------------------*\
+    Table des matières GENERAL
+\*------------------------------------*/
+/**
+ * GLOBAL RULES....................... Variables majeurs
+ * TYPO RESPONSIVE.................... Règles typo pour les appareils nomades
+ * NAV................................ Style de la barre de navigation
+ * LAYOUT STYLE....................... Style générique des habillage et positionnement
+ * LAYOUT STYLE NOMAD................. Style générique des habillage et positionnement pour les appareils nomades
+ */
+
+
+
+
+
+/*------------------------------------*\
+    $GLOBAL RULES
+\*------------------------------------*/
+$primary: #ECF0F1;
+$secondary: #2980B9;
+
+body{
+  margin-top: 3.5rem;
+}
+
+.bg-site-primary{
+  background-color: $primary
+}
+
+.bg-site-secondary{
+  background-color: $secondary
+}
+
+.border-color-secondary{
+  border-color: $secondary;
+}
+/*------------------------------------*\
+    $TYPO RESPONSIVE
+\*------------------------------------*/
+@include mquery(768px){
+  body{
+    font-size: 14px;
+    h1{
+      font-size: 2.3em;
+    }
+    h2{
+      font-size: 1.8em;
+    }
+    h3{
+      font-size: 1.6em;
+    }
+    h4{
+      font-size: 1.4em;
+    }
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+    $NAV
+\*------------------------------------*/
+#main-nav{
+  background-color: $primary;
+}
+#sidebar{
+  position: fixed;
+  top: 51px;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  border-right: 1px solid #eee;
+  background-color: $secondary; 
+  .nav-item a{
+    color: #fff;
+  }
+  .active a{
+    color: $primary;
+  }
+}
+
+
+
+
+/*------------------------------------*\
+    $LAYOUT STYLE
+\*------------------------------------*/
+.content-area{
+  padding: calc(1rem * 2);
+  .admin-table{
+    margin-bottom: 2em;
+    th,td{
+      vertical-align: middle;
+    }
+  }
+  .admin-form{
+ /**
+ * Switch Styles
+ */
+    input[type=checkbox].switch + label{
+      width: 34px;
+      height: 14px;
+      background: lightgray;
+      display: inline-block;
+      border-radius: 10px;
+      position: relative;
+      cursor: pointer;
+      margin: 10px;
+      &:before,
+      &:after{
+        content: "";
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: white;
+        border-radius: 50%;
+        position: absolute;
+        top: -3px;
+        left: 0;
+        transition: all .2s;
+      }
+      &:after{
+        box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+      }
+      &:before{
+        background: lightgray;
+        transform: scale3d(0,0,1);
+      }
+      &:active:before{
+        transform: scale3d(3,3,1);
+        opacity: 0;
+      }
+    }
+    input[type=checkbox].switch{
+      display: none;
+      &:checked + label{
+        background: rgba(4, 196, 52, 0.5);
+        &:before,
+        &:after{
+          left: 14px;
+          background: rgb(4, 196, 52);
+        }
+      }
+      &:disabled + label{
+        opacity: 0.4;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
+@include mquery(768px){
+  .content-area{
+    padding: 1rem;
+  }
+}

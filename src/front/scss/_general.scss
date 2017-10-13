@@ -1,0 +1,272 @@
+/*------------------------------------*\
+    Table des matières GENERAL
+\*------------------------------------*/
+/**
+ * GLOBAL RULES....................... Variables majeurs
+ * TYPO RESPONSIVE.................... Règles typo pour les appareils nomades
+ * MAIN NAV SCREEN.................... Style du menu principal sur écran large
+ * MAIN NAV NOMAD..................... Style du menu principal pour les appareils nomades
+ * ADMIN NAV BAR...................... Style de la barre d'administration
+ * LAYOUT STYLE....................... Style générique des habillage et positionnement
+ * LAYOUT STYLE NOMAD................. Style générique des habillage et positionnement pour les appareils nomades
+ */
+
+
+
+
+
+/*------------------------------------*\
+    $GLOBAL RULES
+\*------------------------------------*/
+$primary: #2980B9 ;
+$secondary: #ECF0F1 ;
+
+body{
+  background-color: #fff;
+}
+
+
+
+/*------------------------------------*\
+    $TYPO RESPONSIVE
+\*------------------------------------*/
+@include mquery(768px){
+  body{
+    font-size: 14px;
+    h1{
+      font-size: 2.3em;
+    }
+    h2{
+      font-size: 1.8em;
+    }
+    h3{
+      font-size: 1.6em;
+    }
+    h4{
+      font-size: 1.4em;
+    }
+  }
+}
+
+
+
+
+
+/*------------------------------------*\
+    $MAIN NAV SCREEN
+\*------------------------------------*/
+#main-header{
+  position: fixed;
+  z-index: 2000;
+  top: 0; bottom: 0;
+  padding: 25px 0 25px 40px;
+  @include flex-wrap;
+  flex-direction: column;
+  justify-content: space-between;
+
+  nav{
+    ul{
+      li{
+        padding: 30px 10px;
+          a{
+            position: relative;
+            font: 1.3em $merriweather;
+            color: $primary;
+            &::after{
+              content: "";
+              @include position(absolute, '', '', -5px, 0); 
+              width: 0;
+              height: 2px;
+              background-color: $primary;
+              @include transition(width, .5s);
+              @include transition(heigh, .3s);
+            }
+            &:hover{
+              text-decoration: none;
+              color: $primary;
+              background-color: transparent;
+            }
+            &:focus{
+              text-decoration: none;
+              color: $primary;
+              background-color: transparent;
+            }
+            &:hover::after{
+              width: 100%;
+              @include transition(width, .5s);
+            }
+          }
+        }
+      .active a::after{
+        width: 100%;
+        height: 4px;
+        @include transition(height, .3s);
+        @include transition(width, .5s);
+      }       
+    }      
+  }
+  .copyright{
+    padding-top: 8em;
+    font-size: 0.8em;
+  }
+}
+
+
+
+
+/*------------------------------------*\
+    $MAIN NAV NOMADE
+\*------------------------------------*/
+@include mquery(768px){
+  #main-header{
+    @include position(fixed, 0, '',inherit, '');
+    background-color: $secondary;
+    padding: 0 ;
+    justify-content: inherit;
+    @include transition(height, .5s);
+
+    #header-top{
+      @include flex-wrap;
+      flex-direction: row;
+      flex-wrap : no-wrap;
+      justify-content: space-around;
+      img{
+        padding: 1rem;
+      }
+      #hamburger{
+        text-align: center;
+        cursor: pointer;
+        padding: 10px;
+        span{
+          background-color: #fff;
+          padding: 1em;
+          border-radius: 50%;
+          box-shadow: 0 2px 2px rgba(0,0,0,0.5) inset;
+        }
+      }
+    }
+
+
+    nav{
+      display: none;
+      @include slide-in-from(x, -200px, 1s);
+      background-color: $secondary;
+      width: 80%;
+      ul{
+        padding-left: 40px;
+      }
+    }
+
+    .copyright{
+      padding-left: 40px;
+    }
+
+  }
+}
+
+
+
+
+/*------------------------------------*\
+    $ADMIN NAV BAR
+\*------------------------------------*/
+#admin-navbar{
+  z-index: 5000;
+  border: none;
+  background-color: rgba(38,50,56,0.8);
+  ul{
+    width: 100%;
+    justify-content: flex-end;
+  }
+  a{
+    color: #fff;
+    &:hover{
+      color: $secondary;
+    }
+  }
+}
+
+
+
+
+/*------------------------------------*\
+    $LAYOUT STYLE
+\*------------------------------------*/
+.content-area > div{
+  padding: 2em;
+}
+
+.justify-content-end > .col-md-8 > .row{
+  margin-top: 2em;
+}
+
+@include mquery(768px){
+  .content-area > div{
+    padding: 3em 2em;
+
+  }
+}
+
+
+
+
+/*------------------------------------*\
+    $LIST STYLE
+\*------------------------------------*/
+.liste{
+
+    h3{
+        @include position(relative);
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    h3:before{
+      @include position(absolute,'' ,'' ,-10px,'');
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $secondary;
+      @include opacity(0);
+
+    }
+
+    ul{
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+
+    .listing>li{
+        margin-bottom: 30px;
+    }
+
+
+    .listing ul{
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 2px solid $secondary;
+    }
+
+    .list-title{
+        padding: 3px 5px;
+        background-color: $primary;
+        color: $secondary;
+        margin-bottom: 5px;
+        font: 1.15em $kelson;
+    }
+    .intitule{
+        margin-top: 10px;
+        font: 1.2em $kelson;
+        color: $primary;
+    }
+}
+
+.col-md-6:hover h3:before{
+  width: 50%;
+  height: 5px;
+  border-radius: 0;
+  @include opacity(1);
+  @include slide-in-from(x, -200px, 1s);
+}

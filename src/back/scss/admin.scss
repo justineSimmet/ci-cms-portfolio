@@ -1,0 +1,570 @@
+/*------------------------------------*\
+    Table des matières
+\*------------------------------------*/
+/**
+ * MIXINS..................... Mixins standards
+ * FONT....................... Les polices de caractère
+ * TYPO....................... Règles éléments typographiques
+ * GENERAL.................... Règles éléments standard (Menus / Layout/ Listes...)
+ * DASH ...................... Styles du tableau de bord
+ * PROFIL .................... Styles spécifiques page profil
+ * PREVIEW.................... Styles spécifiques page preview
+ * GALLERY INDEX.............. Styles spécifiques page index des galeries
+ * GALLERY.................... Styles spécifiques vue page galerie
+ */
+
+
+
+
+
+/*------------------------------------*\
+    $FONT
+\*------------------------------------*/
+@import 'mixins';
+
+
+
+
+/*------------------------------------*\
+    $FONT
+\*------------------------------------*/
+@import 'font';
+
+
+
+
+
+/*------------------------------------*\
+    $TYPO
+\*------------------------------------*/
+@import 'typo';
+h1{
+  margin-bottom: 2rem;
+}
+
+h2{
+  font-size: 1.6em;
+}
+
+h3{
+  font-size: 1.5em;
+}
+
+h4{
+  font-size: 1.3em;
+}
+
+h5{
+  font-size: 1.2em;
+}
+
+/*------------------------------------*\
+    $GENERAL
+\*------------------------------------*/
+@import 'admin_general';
+
+button{
+  cursor: pointer;
+}
+
+
+
+
+/*------------------------------------*\
+    $DASHBOARD
+\*------------------------------------*/
+#dash-card{
+  .tab-pane{
+    padding: 1rem;
+  }
+  #dash-quiz{
+    #quiz{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content:space-between;
+
+      #quizInfo{
+        width: 40%;
+        border: 2px solid #007bff;
+        padding: 1rem;
+        margin-right: 1rem;
+
+        p{
+          margin-top: 1rem;
+          margin-bottom: 1rem;
+        }
+
+        #quizQuestion{
+          padding: 0.5rem;
+          border-radius: 0.5rem;
+          background-color: #007bff;
+          color: #fff;
+          font-family: $kelson;
+          text-align: center;
+          border: 2px solid #007bff;
+        }
+        #quizStep, #quizScore{
+          font-family: $kelson;
+          text-align: center;
+          font-size: 1.2rem;
+          color: $secondary;
+        }
+        #quizScore{
+          font-size: 2rem;
+          font-family: $kelson-bold;
+          color: #007bff;
+        }
+      }
+      #quizAction{
+        margin: auto;
+        width:55%;
+        padding-right: 1rem;
+      }
+    }
+  }
+  #quizResult{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 2px solid;
+    margin-bottom: 1rem;
+    p{
+      margin-bottom: 0;
+    }
+  }
+}
+
+@include mquery(768px){
+  #dash-card{
+    #dash-quiz{
+      #quiz{
+        #quizInfo{
+          width: 100%;
+          margin-bottom: 1rem;
+          margin-right: 0;
+        }
+        #quizAction{
+          width: 100%;
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+#items-overview{
+  .item{
+    position: relative;
+    width: 20%;
+    min-width: 150px;
+    margin: 1rem auto;
+    background-color: $primary;
+    @include prefix(box-shadow, 0 5px 5px rgba(0,5px,5px,0.3), (webkit,moz))
+    @include transform(scale(1));
+    @include transition(transform, 0.3s, ease-out);
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    -webkit-transition: -webkit-transform 0.3s ease-out, -webkit-box-shadow 0.3s ease-out;
+    -moz-transition: -moz-transform 0.3s ease-out, -moz-box-shadow 0.3s ease-out;
+    -o-transition: -o-transform 0.3s ease-out, -o-box-shadow 0.3s ease-out;
+    &:before{
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+    &:hover{
+      @include transform(scale(1.25));
+      @include prefix(box-shadow, 0 10px 10px rgba(0,10px,10px,0.3), (webkit,moz))
+      transition: transform 0.5s ease-out, box-shadow 0.5s ease-out;
+      -webkit-transition: -webkit-transform 0.5s ease-out, -webkit-box-shadow 0.5s ease-out;
+      -moz-transition: -moz-transform 0.5s ease-out, -moz-box-shadow 0.5s ease-out;
+      -o-transition: -o-transform 0.5s ease-out, -o-box-shadow 0.5s ease-out;
+    }
+    .item-content{
+      @include position(absolute, 0, 0, 0, 0);
+      text-align: center;
+      a{
+        @include position(absolute, 0, 0, 0, 0);
+        color: $secondary;
+        h4{
+          @include position(absolute, 0, 0, 0, 0);
+          display: block;
+          vertical-align: middle;
+          top: 50%;
+          transform: translateY(-50%);
+          margin: 0;
+          z-index: 1000;
+          span{
+            font-size: 3rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+#log-card{
+  .card-body{
+    padding: 1rem 0;
+  }
+  #visit-table{
+    thead th{
+      border-bottom: none;
+      border-top: none;
+    }
+    tbody{
+      font-size: 0.9rem;
+      td{
+        padding: 0.5rem;
+      }
+    }
+    .pagination{
+      .page-item.active{
+        background-color: $secondary !important;
+        border-color: $secondary !important;
+      }
+    }
+  }
+}
+
+.hide-dash{
+  display: none !important;
+}
+
+/*------------------------------------*\
+    $USER
+\*------------------------------------*/
+.is-admin{
+  background-color: $primary;
+}
+
+
+
+
+
+/*------------------------------------*\
+    $PROFIL
+\*------------------------------------*/
+#profil-form{
+  form > .card{
+    margin-bottom: 1rem;
+
+    label{
+      text-align: right;
+    }
+  }
+}
+
+
+/*------------------------------------*\
+    $PREVIEW
+\*------------------------------------*/
+#preview_project{ 
+  #project-description{
+    padding-top: 2em;
+    h1{
+      font-size: 2.3em;
+      margin-bottom: 20px;
+    }
+    h2{
+      font-size: 1.5em;
+      margin-top: 25px;
+    }
+    p:not(.my-button){
+      padding-left: 20px;
+      border-left: 2px solid $primary;
+      text-align: justify;
+    }
+  }
+  #project-gallery{
+    margin: 0.5em 0;
+    @include prefix(column-gap, 0.5em, (moz,webkit));
+    @include prefix(column-count, 2, (moz,webkit));
+    .grid-item{
+      position: relative;
+      margin: 0 0 0.5em;
+      width: 100%;
+      @include prefix(box-sizing, border-box, (moz,webkit));
+      img{
+          max-width: 100%;
+      }
+    }
+    .grid-item::before{
+      @include position(absolute);
+      content: '';
+      width: 5px;
+      height: 0;
+      background-color: $primary;
+      @include transition(height, 0.15s, ease-in);
+    }
+    .grid-item:hover::before{
+      height: 100%;
+      @include transition(height, 0.35s, ease-out);
+    } 
+  }
+  .liste{
+    h3{
+        @include position(relative);
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+    h3:before{
+      @include position(absolute,'' ,'' ,-10px,'');
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: $primary;
+      @include opacity(0);
+
+    }
+
+    ul{
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+
+    .listing>li{
+        margin-bottom: 30px;
+    }
+
+
+    .listing ul{
+        margin-left: 10px;
+        padding-left: 10px;
+        border-left: 2px solid $primary;
+    }
+
+    .list-title{
+        padding: 3px 5px;
+        background-color: $secondary;
+        color: $primary;
+        margin-bottom: 5px;
+        font: 1.15em $kelson;
+    }
+    .intitule{
+        margin-top: 10px;
+        font: 1.2em $kelson;
+        color: $secondary;
+    }
+  }
+
+
+  .my-button{
+    text-align: right;
+    margin-top: 2em;
+    a{
+      @include position(relative);
+      padding: 0.5em;
+      z-index: 0;
+      border :2px solid $primary;
+      &:before{
+        content: '';
+        @include position(absolute, 0, 0, 0, 0);
+        z-index: -5;
+        display: block;
+        background-color: $secondary;
+        width: 0;
+      }
+      &:hover{
+        color: $primary;
+        @include transition(color, .3s);
+      }
+      &:hover:before{
+        width: 100%;
+        @include transition(width, .3s);
+      }
+      span{
+        padding-right: 10px;
+      }
+    }
+  }
+
+  @include mquery(768px){
+    font-size: 14px;
+    h1{
+      font-size: 2.3em;
+    }
+    h2{
+      font-size: 1.8em;
+    }
+    h3{
+      font-size: 1.6em;
+    }
+    h4{
+      font-size: 1.4em;
+    }
+  }
+
+}
+
+
+
+/*------------------------------------*\
+    $GALLERIES INDEX
+\*------------------------------------*/
+#grid-gallery-card{
+  .card-deck{
+    width: 100%;
+    .card{
+      min-width: 23%;
+      max-width: 23%;
+      margin-bottom: 1.5em;
+      .card-img-top{
+        background-color: #C7C7C7;
+        display: block;
+        height: 200px;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+
+      .no-img{
+        position: relative;
+
+        &::after{
+          position: absolute;
+          display: inline-block;
+          width: 100px;
+          height: 100px;
+          top:0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          margin: auto;
+          content: '';
+          background: url('../../images/no-picture.svg');
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+      }
+    }
+  }
+}
+
+
+@include mquery(768px){
+  #grid-gallery-card{
+    .card{
+      margin: auto;
+      min-width: 90%;
+      max-width: 90%;
+      margin-bottom: 1.5em;
+    }
+  }
+}
+
+/*------------------------------------*\
+    $GALLERY
+\*------------------------------------*/
+#list-picture-sort{
+  position: relative;
+  #gallery-list{
+    .gallery-item{
+      padding: 10px;
+      border: 2px solid $primary;
+      border-radius: 10px;
+      margin-bottom: 15px;
+      cursor: grab;
+      background-color: #fff;
+      .item-picture-container{
+        width: 35%;
+        height: 150px;
+        padding: 5px;
+        border: 1px solid #E6E6E6;
+        border-radius: 5px;
+        .item-picture{
+          width: 100%;
+          height: 100%;
+          background-size: cover;
+          background-repeat: no-repeat;
+          border-radius: 5px;
+        }
+      }
+      .item-desc{
+        width: 50%;
+      }
+    }
+    .ui-state-highlight{
+      height: 170px;
+      border: 2px dotted $primary;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+  }
+}
+
+#gallery-list-count{
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 3rem;
+  li{
+    width: 100%;
+    height: 174px;
+    margin-bottom: 15px;
+    span{
+      font-size: 6em;
+      @include opacity(0.3); 
+    }
+  }
+}
+
+#picture-form{
+  .btn-tertiary {
+    color: #555;
+    padding: 0;
+    line-height: 40px;
+    width: 100%;
+    margin: auto;
+    display: block;
+    border: 1px solid rgba(0,0,0,.15);
+    &:hover, 
+      &:focus {
+        color: lighten(#555, 20%);
+        border-color: lighten(#555, 20%);
+      }
+  }
+  .is-invalid{
+    border: 1px solid #dc3545;
+    &:hover, 
+      &:focus {
+        border-color: lighten(#dc3545, 20%);
+      }
+  }
+
+  /* input file style */
+
+  .input-file {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+    + .js-labelFile {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      padding: 0 10px;
+      cursor: pointer;
+    }
+  }
+
+  #new-img{
+    display: none;
+
+    .container{
+      padding: 10px;
+      border: 1px dotted #BCBCBC;
+      border-radius: 10px;
+
+      #img-preview{
+        background-image:url('');
+        background-size:cover;
+        background-position: center;
+        max-width: 150px;
+        height: 150px;
+      }
+    }
+  }
+}

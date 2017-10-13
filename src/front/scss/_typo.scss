@@ -1,0 +1,62 @@
+/*------------------------------------*\
+    $TYPOGRAPHY RULES
+\*------------------------------------*/
+$kelson :'kelson', 'Helvetica Neue', Helvetica, Arial,sans-serif;
+$kelsonBold :'kelson-bold', 'Helvetica Neue', Helvetica, Arial,sans-serif;
+$merriweather: 'merriweather', Georgia, 'Times New Roman', Times, serif;
+$merriweather-bold: 'merriweather-bold', Georgia, 'Times New Roman', Times,serif;
+
+body{
+  font-family: $kelson;
+}
+
+h1{
+  font: 2.8em $merriweather;
+}
+
+h2, h3, h4, h5{
+  font-family: $kelsonBold;
+}
+
+h2{
+  font-size: 2.3em;
+}
+
+h3{
+  font-size: 1.8em;
+}
+
+h4{
+  font-size: 1.5em;
+}
+
+h5{
+  font-size: 1.2em;
+}
+
+h6{
+  font: 0.9em $kelson;
+}
+
+p{
+  font-family: $merriweather;
+  line-height: 1.8em;
+}
+
+ul, ol{
+  list-style-type: none;
+  padding-left: 0;
+
+  li > ul{
+    padding-left: 20px;
+  }
+}
+
+a {
+  text-decoration: none;
+  color: #263238;
+  &:hover{
+    text-decoration: none;
+    color: #263238;
+  }
+}

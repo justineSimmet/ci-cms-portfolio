@@ -1,0 +1,109 @@
+/*------------------------------------*\
+    $MIXINS
+\*------------------------------------*/
+
+
+/* OPTIMISATION DES PREFIXS  */
+@mixin prefix($property, $value, $prefixes: ()) {
+  @each $prefix in $prefixes {
+    -#{$prefix}-#{$property}: $value;
+  }
+  #{$property}: $value;
+}
+
+/* PREFIX DES KEYFRAMES  */
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+/* CENTRAGE D'UN BLOC  */
+@mixin center-block {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* GESTION DE L'OPACITES  */
+@mixin opacity($opacity) {
+    opacity: $opacity;
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=#{$opacity * 100})";
+}
+
+/* APPEL MEDIA QUERIES SIMPLIFIE  */
+@mixin mquery($width, $ratio: false) {
+  @if $ratio {
+    @media
+      only screen and (max-width: $width) and  (min--moz-device-pixel-ratio: $ratio),
+      only screen and (max-width: $width) and  (-webkit-min-device-pixel-ratio: $ratio),
+      only screen and (max-width: $width) and  (min-device-pixel-ratio: $ratio) {
+      @content;
+    }
+  } @else {
+    @media only screen and (max-width: $width) {
+      @content;
+    }
+  }
+}
+
+/* TRANSPARENCE DU NOIR  */
+@function black($opacity) {
+  @return rgba(0, 0, 0, $opacity);
+}
+
+/* PARAMETRAGE DES POSITIONS  */
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null) {
+  position: $type;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+}
+
+/* APPEL DU FLEX  */
+@mixin flex-wrap {
+  display: -webkit-box;  /* OLD - iOS 6-, Safari 3.1-6, BB7 */
+  display: -ms-flexbox;  /* TWEENER - IE 10 */
+  display: -webkit-flex; /* NEW - Safari 6.1+. iOS 7.1+, BB10 */
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+}
+
+/* APPEL D'UN TRANSFORM  */
+@mixin transform($transformation){
+  @include prefix(transform, $transformation, 'webkit' 'ms');
+}
+
+/* SIMPLIFICATION DES TRANSITIONS  */
+@mixin transition($target, $time: 1s, $timing-function: ease-in-out) {
+    @include prefix(transition,$target $time $timing-function, 'webkit');
+}
+
+/* EFFET SLIDE IN  */
+@mixin slide-in-from($slide-axis: x, $slide-offset: -100px, $animation-properties: 3s ease-out) {
+  $slide-start: if($slide-axis == x, translateX($slide-offset), translateY($slide-offset));
+  $slide-end: if($slide-axis == x, translateX(0), translateY(0));
+
+  @include keyframes(slide-in-#{$slide-axis}-#{$slide-offset}){
+    0% {
+      @include opacity(0);
+      @include transform($slide-start);
+    }
+    75% {
+      @include transform($slide-end);
+    }
+    100% {
+      @include opacity(1);
+    }
+  }
+  @include prefix(animation, slide-in-#{$slide-axis}-#{$slide-offset} $animation-properties, 'webkit');
+}
+
+/* Hauteur toujours égale à la largeur */
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
