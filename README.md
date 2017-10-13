@@ -65,6 +65,7 @@ Pour fonctionner, le projet a besoin de :
 1. Clonez ou copiez le répertoire.
 
 2. Lancez une installation des dépendances via votre gestionnaire de paquets.
+
   * Avec Yarn
     
         yarn install
@@ -88,7 +89,7 @@ Pour assurer le fonctionnement de votre projet, il y a 3 fichiers à modifier.
 
 2. dans : application/config/config.php ligne 26
 
-        $config['base_url'] = '[adresse de votre projet sur votre serveur local ou distant - ex: http://localhost:8080/mon-portfolio/]';
+        $config['base_url'] = [adresse de votre projet sur votre serveur local ou distant - ex: http://localhost:8080/mon-portfolio/];
 
 3. dans : application/config/database.php
   * Ici, il faut créer la connexion avec votre base de données. Vous trouverez le script d'installation de la base dans le dossier script_database à la racine du projet. 
@@ -184,7 +185,7 @@ Le projet est installé, configuré, personnalisé, vous souhaitez maintenant cr
   * Vous pouvez évidemment modifier, masquer ou supprimer ces visuels.
   * Vous pouvez également gérer leur ordre d'affichage.
     * Pour cela, il suffit de cliquer sur le projet et de leur faire glisser dans la liste à sa nouvelle position.
-    * **Le premier visuel de la liste est celui qui apparaîtra en couverture de la galerie et du projet**
+    * **Le premier visuel de la liste est celui qui apparaîtra en couverture de la galerie et du projet**.
   * Vous pouvez prévisualiser votre projet, même s'il n'est pas publié.
 5. Admirez le travail en vous rendant sur la page d'accueil du site !
 
