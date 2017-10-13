@@ -65,13 +65,13 @@ Pour fonctionner, le projet a besoin de :
 1. Clonez ou copiez le répertoire.
 
 2. Lancez une installation des dépendances via votre gestionnaire de paquets.
-
+  * Avec Yarn
     
-    yarn install
+        yarn install
     
-ou
+  * Avec NPM
     
-    npm install
+        npm install
     
 
 **Utilisant Yarn, je continuerais mes explications avec sa syntaxe.**
@@ -82,13 +82,13 @@ Pour assurer le fonctionnement de votre projet, il y a 3 fichiers à modifier.
 
 1. à la racine du projet : webpack.config.js ligne 94
 
-    new webpack.DefinePlugin({
-      BaseURL: '\'[adresse de votre projet sur votre serveur local ou distant - ex: http://localhost:8080/mon-portfolio/]\'',
-    }),
+        new webpack.DefinePlugin({
+          BaseURL: '\'[adresse de votre projet sur votre serveur local ou distant - ex: http://localhost:8080/mon-portfolio/]\'',
+        }),
 
 2. dans : application/config/config.php ligne 26
 
-    $config['base_url'] = '[adresse de votre projet sur votre serveur local ou distant - ex: http://localhost:8080/mon-portfolio/]';
+        $config['base_url'] = '[adresse de votre projet sur votre serveur local ou distant - ex: http://localhost:8080/mon-portfolio/]';
 
 3. dans : application/config/database.php
   * Ici, il faut créer la connexion avec votre base de données. Vous trouverez le script d'installation de la base dans le dossier script_database à la racine du projet. 
