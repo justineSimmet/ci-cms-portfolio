@@ -11,6 +11,7 @@ application/logs/*
 public/build
 
 composer.lock
+yarn.lock
 node_modules
 yarn-debug.log*
 yarn-error.log*
